@@ -7,7 +7,7 @@ if six.PY3:
     from tkinter.filedialog import *
     import tkinter.font as tkFont
     import tkinter.messagebox as tkMessageBox
-    from configparser import SafeConfigParser
+    from configparser import ConfigParser as SafeConfigParser
     print (u"Python3 imports")
 else:
     from Tkinter import *
@@ -648,7 +648,7 @@ def on_exit():
     exit()
 
     
-timeRefPathLabel = time.clock()
+timeRefPathLabel = time.process_time()
 def reactOnResize(event):
     global timeRefPathLabel
     try:
@@ -657,9 +657,9 @@ def reactOnResize(event):
         return
     if not os.path.isfile(nusPath):
         return
-    if time.clock()-timeRefPathLabel<0.1:
+    if time.process_time()-timeRefPathLabel<0.1:
         return
-    timeRefPathLabel = time.clock()
+    timeRefPathLabel = time.process_time()
     pathLabel.config(text=adaptLength(nusPath,event.width))
 
 # global songs
